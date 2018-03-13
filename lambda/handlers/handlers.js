@@ -1,5 +1,18 @@
 var handlers = {
-
+    'getCard': function() {
+        const speechOutput = 'Hello world!';
+        const repromptSpeech = 'Hello again!';
+        const cardTitle = 'Hello World Card';
+        const cardContent = 'This text will be displayed in the companion app card.';
+        const imageObj = {
+            smallImageUrl: 'https://imgs.xkcd.com/comics/standards.png',
+            largeImageUrl: 'https://imgs.xkcd.com/comics/standards.png'
+        };
+        this.response.speak(speechOutput)
+            .listen(repromptSpeech)
+            .cardRenderer(cardTitle, cardContent, imageObj);
+        this.emit(':responseReady');
+    },
     'NewSession': function () {
         this.emit(':ask', 'Welcome to Voice Devs! The skill that gives you all the information about the alexa developer community. You can ask me about the various alexa meetups around the world, or listen to the alexa dev chat podcast. But first, I\'d like to get to know you better. Tell me your name by saying: My name is, and then your name.', 'Tell me your name by saying: My name is, and then your name.');
     },
@@ -134,5 +147,6 @@ var handlers = {
 
     }
 
-
 };
+
+module.exports = handlers;

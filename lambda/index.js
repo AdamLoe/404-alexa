@@ -1,9 +1,17 @@
 var Alexa = require('alexa-sdk');
-var handlers = require('./handlers');
+var handlers = require('./handlers/handlers');
+
+var constants = require('constants/constants');
 
 exports.handler = function (event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    alexa.dynamoDBTableName = 'Users';
-    alexa.registerHandlers(handlers);
+
+    alexa.appId = constants.appId;
+    alexa.dynamoDBTableName = constants.dynamoDBTableName;
+
+    alexa.registerHandlers(
+        handlers
+    );
+
     alexa.execute();
 };
