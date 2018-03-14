@@ -3,18 +3,22 @@
     "intents": [
       {
         "name": "AMAZON.CancelIntent",
+        "slots": [],
         "samples": []
       },
       {
         "name": "AMAZON.HelpIntent",
+        "slots": [],
         "samples": []
       },
       {
         "name": "AMAZON.StopIntent",
+        "slots": [],
         "samples": []
       },
       {
         "name": "ChangeNutritionist",
+        "slots": [],
         "samples": [
           "I would like add a nutritionist",
           "Add nutritionist",
@@ -23,11 +27,16 @@
           "Change nutritionist",
           "Change doctor",
           "I would like to change my doctor"
-        ],
-        "slots": []
+        ]
       },
       {
         "name": "ChangeWeight",
+        "slots": [
+          {
+            "name": "weight",
+            "type": "AMAZON.NUMBER"
+          }
+        ],
         "samples": [
           "Change my weight to {weight}",
           "I weigh {weight}",
@@ -36,24 +45,80 @@
           "The scale said {weight}",
           "The scale said {weight} today",
           "I weigh {weight} pounds"
-        ],
-        "slots": [
-          {
-            "name": "weight",
-            "type": "AMAZON.NUMBER"
-          }
         ]
       },
       {
-        "name": "Hello",
-        "samples": [
-          "hello",
-          "hi",
-          "hey"
+        "name": "addFood",
+        "slots": [
+          {
+            "name": "foodItem",
+            "type": "AMAZON.Food"
+          },
+          {
+            "name": "eatingTime",
+            "type": "eatingTime"
+          }
         ],
-        "slots": []
+        "samples": [
+          "i just ate {foodItem}",
+          "i had {foodItem}",
+          "{foodItem} for {eatingTime}",
+          "i ate {foodItem} at {eatingTime}",
+          "i ate {foodItem} for {eatingTime}",
+          "i had {foodItem} for {eatingTime}",
+          "i ate {foodItem}",
+          "i ate {foodItem} today"
+        ]
       }
     ],
-    "invocationName": "tutorial"
+    "types": [
+      {
+        "name": "eatingTime",
+        "values": [
+          {
+            "id": "",
+            "name": {
+              "value": "Midnight snack",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "",
+            "name": {
+              "value": "Snack",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "",
+            "name": {
+              "value": "Brunch",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "",
+            "name": {
+              "value": "Breakfast",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "",
+            "name": {
+              "value": "Dinner",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "",
+            "name": {
+              "value": "Lunch",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ]
   }
 }
