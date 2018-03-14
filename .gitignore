@@ -25,3 +25,4 @@ node_modules
 npm-debug.log
 .gitattributes
 /lambda/package-lock.json
+/lambda/custom/package-lock.json

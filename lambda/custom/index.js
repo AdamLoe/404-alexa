@@ -1,6 +1,6 @@
 var Alexa = require('alexa-sdk');
-var handlers = require('./handlers');
 
+var logger = require('./logger.js');
 var constants = require('./constants/constants.js');
 
 var mainHandlers = require('./handlers/mainHandlers');
@@ -8,16 +8,17 @@ var registerHandlers = require('./handlers/registerHandlers');
 var reportHandlers = require('./handlers/reportHandlers');
 var surveyHandlers = require('./handlers/surveyHandlers');
 
-exports.handler = function (event, context, callback) {
-    var alexa = Alexa.handler(event, context);
-    console.log('-------------NEW REQUEST-------------');
-    console.log('event', event);
-    console.log('context', context);
 
+exports.handler = function (event, context, callback) {
+    //Log whatever
+    logger(event, context);
+
+    //Setup alexa, secure app with appid, setup dynamoDB Table
+    var alexa = Alexa.handler(event, context);
     alexa.appId = constants.appId;
     alexa.dynamoDBTableName = constants.dynamoDBTableName;
 
-    alexa.dynamoDBTableName = 'Users';
+    //Give it our event handlers and start it up
     alexa.registerHandlers(
       mainHandlers,
       registerHandlers,

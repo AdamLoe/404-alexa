@@ -1,3 +1,7 @@
+/*
+    Part of a tutorial series, meant for referencing code
+ */
+
 var Alexa = require('alexa-sdk');
 
 var constants = require('../constants/constants');
