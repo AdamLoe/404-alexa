@@ -1,5 +1,6 @@
 {
   "languageModel": {
+    "invocationName": "404",
     "intents": [
       {
         "name": "AMAZON.CancelIntent",
