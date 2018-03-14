@@ -1,0 +1,59 @@
+{
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "ChangeNutritionist",
+        "samples": [
+          "I would like add a nutritionist",
+          "Add nutritionist",
+          "Add Doctor",
+          "I would like to add a doctor",
+          "Change nutritionist",
+          "Change doctor",
+          "I would like to change my doctor"
+        ],
+        "slots": []
+      },
+      {
+        "name": "ChangeWeight",
+        "samples": [
+          "Change my weight to {weight}",
+          "I weigh {weight}",
+          "I weighed {weight} today",
+          "I'm {weight} pounds",
+          "The scale said {weight}",
+          "The scale said {weight} today",
+          "I weigh {weight} pounds"
+        ],
+        "slots": [
+          {
+            "name": "weight",
+            "type": "AMAZON.NUMBER"
+          }
+        ]
+      },
+      {
+        "name": "Hello",
+        "samples": [
+          "hello",
+          "hi",
+          "hey"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "tutorial"
+  }
+}

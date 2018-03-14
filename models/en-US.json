@@ -1,0 +1,26 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "tutorial",
+      "intents": [
+        {
+          "name": "Hello",
+          "samples": [
+            "hello",
+            "hi",
+            "hey"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent"
+        },
+        {
+          "name": "AMAZON.CancelIntent"
+        },
+        {
+          "name": "AMAZON.HelpIntent"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2 @@
+ask deploy -t lambda
+ask simulate -l en-US -f tests/open
