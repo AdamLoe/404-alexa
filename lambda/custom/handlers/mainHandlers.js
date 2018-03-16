@@ -1,64 +1,52 @@
-var Alexa = require('alexa-sdk');
+var Alexa = require("alexa-sdk");
 
-var constants = require('../constants/constants');
+var constants = require("../constants/constants");
 
 var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
-    'ChangeWeight': function() {
-        var weight = this.event.request.intent.slots.weight.value;
-        var weightRemark = 'average user';
-        if (weight > 500) {
-          weightRemark = 'chubby boi';
-        }
-        if (weight < 100) {
-          weightRemark = 'skinny boi';
-        }
-        this.emit(':tell', 'alexa thanks you for the free information,' + weightRemark);
-    },
-    'ChangeNutritionist': function() {
-        var question = 'what shitty doc you want?';
-        var cardContent = {
-            type: "Simple",
-            title: "Card Title",
-            content: "Card Contents"
-        };
-        this.emit(':askWithCard', question, question, cardContent);
-    },
-    'addFood': function() {
-      var food = this.event.request.intent.slots.foodItem;
-      this.emit('Eating functionally not implemented yet');
-    },
-    'FoodHistory': function() {
-      /*
-        U: Open Food History
-        A: What about your eating history would you like to know
-        U: What did I eat yesterday
-        A: You had a hamburger and a large dr pepper for lunch, a salad and a medium for sweet tea for lunch.
-              What else would you like to know?
-        U: How many calories did I eat yesterday?   You had 2300 Calories yesterday.
-        U: How much sodium did I have yesterday?    You had 200mg, 20% more than the reccomended amount
-        U: How much sodium have I had this week?    You have average 350mg a day, 200% of the reccomended amount
-        U: How many calories have I had this week?  You averaged 400 calories a day, only 20% of the reccomended amount
+	"ChangeWeight": function() {
+		var weight = this.event.request.intent.slots.weight.value;
+		this.emit(":ask", "Thanks for telling me you weigh" + weight + "pounds");
+	},
+	"addFood": function() {
+		var food = this.event.request.intent.slots.foodItem;
+		this.emit(":ask", "Eating functionality not implemented yet");
+	},
+	"GetFoodInfo": function() {
+		var foodItem = this.event.request.intent.slots.foodItem.value;
+		var infoToGet = this.event.request.intent.slots.nutritionInfo.value;
+		console.log("GetFoodInfo", foodItem, infoToGet);
 
-       U: Change food
-       A: What day would you like to change
-       U: Yesterday
-       A: What would you like to change from yesterday? You had
-              1. A hamburger  2. A Dr Pepper  3. A salad  and 4. A sweet tea?
-       U: Delete 1, 2, and 4
-       U: Change 1 to a double cheeseburger
-       U:
-       */
-    },
+		if (infoToGet === "calories") {
+			var calories = -1;
+			switch(foodItem) {
+				case "burger":
+					calories = 300;
+					break;
+				case "burrito":
+					calories = 400;
+					break;
+			}
+			if (calories === -1 ) {
+				this.emit(":ask", "We dont support that item");
+			} else {
+				this.emit(":ask", "a" + foodItem + " has " + calories + " calories", "Is there any else you would like to know");
+			}
+		} else {
+			this.emit(":ask", "nutrition info type not supported");
+		}
+	},
 
+	"FoodHistory": function() {
+		this.emit(":ask", "Food History functionality not implemented yet");
+	},
 
+	"NewSession": function () {
+		this.emit(":ask", "Welcome user: " + this.event.session.user.userId, "You gonna do something or did you just open this to hear my shitty intro");
+	},
 
-  'NewSession': function () {
-      this.emit(':ask', 'Waaaoooww, a new session', 'You gonna do something or did you just open this to hear my shitty intro');
-  },
-
-  'LaunchRequest': function () {
-      this.emit(':ask', 'Congrats, you launched the skill', 'You gonna do something or did you just open this to hear my shitty intro');
-  }
+	"LaunchRequest": function () {
+		this.emit(":ask", "Congrats, you launched the skill", "You gonna do something or did you just open this to hear my shitty intro");
+	}
 
 });
 
