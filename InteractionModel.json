@@ -1,125 +1,232 @@
 {
-  "languageModel": {
-    "invocationName": "404",
-    "intents": [
-      {
-        "name": "AMAZON.CancelIntent",
-        "slots": [],
-        "samples": []
-      },
-      {
-        "name": "AMAZON.HelpIntent",
-        "slots": [],
-        "samples": []
-      },
-      {
-        "name": "AMAZON.StopIntent",
-        "slots": [],
-        "samples": []
-      },
-      {
-        "name": "ChangeNutritionist",
-        "slots": [],
-        "samples": [
-          "I would like add a nutritionist",
-          "Add nutritionist",
-          "Add Doctor",
-          "I would like to add a doctor",
-          "Change nutritionist",
-          "Change doctor",
-          "I would like to change my doctor"
-        ]
-      },
-      {
-        "name": "ChangeWeight",
-        "slots": [
-          {
-            "name": "weight",
-            "type": "AMAZON.NUMBER"
-          }
+    "languageModel": {
+        "invocationName": "nutrition app",
+        "intents": [
+            {
+                "name": "addFood",
+                "slots": [
+                    {
+                        "name": "foodItem",
+                        "type": "AMAZON.Food"
+                    },
+                    {
+                        "name": "eatingTime",
+                        "type": "eatingTime"
+                    }
+                ],
+                "samples": [
+                    "i just ate {foodItem}",
+                    "i had {foodItem}",
+                    "{foodItem} for {eatingTime}",
+                    "i ate {foodItem} at {eatingTime}",
+                    "i ate {foodItem} for {eatingTime}",
+                    "i had {foodItem} for {eatingTime}",
+                    "i ate {foodItem}",
+                    "i ate {foodItem} today"
+                ]
+            },
+            {
+                "name": "AMAZON.CancelIntent",
+                "slots": [],
+                "samples": []
+            },
+            {
+                "name": "AMAZON.HelpIntent",
+                "slots": [],
+                "samples": []
+            },
+            {
+                "name": "AMAZON.StopIntent",
+                "slots": [],
+                "samples": []
+            },
+            {
+                "name": "ChangeNutritionist",
+                "slots": [],
+                "samples": [
+                    "I would like add a nutritionist",
+                    "Add nutritionist",
+                    "Add Doctor",
+                    "I would like to add a doctor",
+                    "Change nutritionist",
+                    "Change doctor",
+                    "I would like to change my doctor"
+                ]
+            },
+            {
+                "name": "ChangeWeight",
+                "slots": [
+                    {
+                        "name": "weight",
+                        "type": "AMAZON.NUMBER"
+                    }
+                ],
+                "samples": [
+                    "Change my weight to {weight}",
+                    "I weigh {weight}",
+                    "I weighed {weight} today",
+                    "I'm {weight} pounds",
+                    "The scale said {weight}",
+                    "The scale said {weight} today",
+                    "I weigh {weight} pounds"
+                ]
+            },
+            {
+                "name": "GetFoodInfo",
+                "slots": [
+                    {
+                        "name": "nutritionInfo",
+                        "type": "nutritionInfo"
+                    },
+                    {
+                        "name": "foodItem",
+                        "type": "AMAZON.Food"
+                    }
+                ],
+                "samples": [
+                    "How many {nutritionInfo} are in a {foodItem}"
+                ]
+            },
+            {
+                "name": "Report",
+                "slots": [
+                    {
+                        "name": "Name",
+                        "type": ""
+                    },
+                    {
+                        "name": "Weight",
+                        "type": "AMAZON.NUMBER"
+                    },
+                    {
+                        "name": "Value_A",
+                        "type": ""
+                    }
+                ],
+                "samples": [
+                    "Do a report"
+                ]
+            }
         ],
-        "samples": [
-          "Change my weight to {weight}",
-          "I weigh {weight}",
-          "I weighed {weight} today",
-          "I'm {weight} pounds",
-          "The scale said {weight}",
-          "The scale said {weight} today",
-          "I weigh {weight} pounds"
+        "types": [
+            {
+                "name": "eatingTime",
+                "values": [
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "Midnight snack",
+                            "synonyms": []
+                        }
+                    },
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "Snack",
+                            "synonyms": []
+                        }
+                    },
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "Brunch",
+                            "synonyms": []
+                        }
+                    },
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "Breakfast",
+                            "synonyms": []
+                        }
+                    },
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "Dinner",
+                            "synonyms": []
+                        }
+                    },
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "Lunch",
+                            "synonyms": []
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "nutritionInfo",
+                "values": [
+                    {
+                        "id": "",
+                        "name": {
+                            "value": "calories",
+                            "synonyms": []
+                        }
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "name": "addFood",
-        "slots": [
-          {
-            "name": "foodItem",
-            "type": "AMAZON.Food"
-          },
-          {
-            "name": "eatingTime",
-            "type": "eatingTime"
-          }
-        ],
-        "samples": [
-          "i just ate {foodItem}",
-          "i had {foodItem}",
-          "{foodItem} for {eatingTime}",
-          "i ate {foodItem} at {eatingTime}",
-          "i ate {foodItem} for {eatingTime}",
-          "i had {foodItem} for {eatingTime}",
-          "i ate {foodItem}",
-          "i ate {foodItem} today"
+    },
+    "dialog": {
+        "intents": [
+            {
+                "name": "Report",
+                "confirmationRequired": true,
+                "prompts": {
+                    "confirmation": "Confirm.Intent.1142967130438"
+                },
+                "slots": [
+                    {
+                        "name": "Name",
+                        "type": "",
+                        "confirmationRequired": false,
+                        "elicitationRequired": true,
+                        "prompts": {
+                            "elicitation": "Elicit.Slot.1142967130438.1153616205196"
+                        }
+                    },
+                    {
+                        "name": "Weight",
+                        "type": "AMAZON.NUMBER",
+                        "confirmationRequired": true,
+                        "elicitationRequired": true,
+                        "prompts": {
+                            "confirmation": "",
+                            "elicitation": ""
+                        }
+                    },
+                    {
+                        "name": "Value_A",
+                        "type": "",
+                        "confirmationRequired": false,
+                        "elicitationRequired": false,
+                        "prompts": {}
+                    }
+                ]
+            }
         ]
-      }
-    ],
-    "types": [
-      {
-        "name": "eatingTime",
-        "values": [
-          {
-            "id": "",
-            "name": {
-              "value": "Midnight snack",
-              "synonyms": []
-            }
-          },
-          {
-            "id": "",
-            "name": {
-              "value": "Snack",
-              "synonyms": []
-            }
-          },
-          {
-            "id": "",
-            "name": {
-              "value": "Brunch",
-              "synonyms": []
-            }
-          },
-          {
-            "id": "",
-            "name": {
-              "value": "Breakfast",
-              "synonyms": []
-            }
-          },
-          {
-            "id": "",
-            "name": {
-              "value": "Dinner",
-              "synonyms": []
-            }
-          },
-          {
-            "id": "",
-            "name": {
-              "value": "Lunch",
-              "synonyms": []
-            }
-          }
-        ]
-      }
+    },
+    "prompts": [
+        {
+            "id": "Confirm.Intent.1142967130438",
+            "variations": [
+                {
+                    "type": "PlainText",
+                    "value": "What is your name"
+                }
+            ]
+        },
+        {
+            "id": "Elicit.Slot.1142967130438.1153616205196",
+            "variations": [
+                {
+                    "type": "PlainText",
+                    "value": "What is your name?"
+                }
+            ]
+        }
     ]
-  }
 }
