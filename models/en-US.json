@@ -1,162 +1,163 @@
 {
-    "languageModel": {
-        "types": [
-            {
-                "name": "eatingTime",
-                "values": [
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "Midnight snack",
-                            "synonyms": []
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "nutrition app",
+            "intents": [
+                {
+                    "name": "addFood",
+                    "slots": [
+                        {
+                            "name": "foodItem",
+                            "type": "AMAZON.Food"
+                        },
+                        {
+                            "name": "eatingTime",
+                            "type": "eatingTime"
                         }
-                    },
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "Snack",
-                            "synonyms": []
+                    ],
+                    "samples": [
+                        "i just ate {foodItem}",
+                        "i had {foodItem}",
+                        "{foodItem} for {eatingTime}",
+                        "i ate {foodItem} at {eatingTime}",
+                        "i ate {foodItem} for {eatingTime}",
+                        "i had {foodItem} for {eatingTime}",
+                        "i ate {foodItem}",
+                        "i ate {foodItem} today"
+                    ]
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ChangeNutritionist",
+                    "samples": [
+                        "I would like add a nutritionist",
+                        "Add nutritionist",
+                        "Add Doctor",
+                        "I would like to add a doctor",
+                        "Change nutritionist",
+                        "Change doctor",
+                        "I would like to change my doctor"
+                    ]
+                },
+                {
+                    "name": "ChangeWeight",
+                    "slots": [
+                        {
+                            "name": "weight",
+                            "type": "AMAZON.NUMBER"
                         }
-                    },
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "Brunch",
-                            "synonyms": []
+                    ],
+                    "samples": [
+                        "Change my weight to {weight}",
+                        "I weigh {weight}",
+                        "I weighed {weight} today",
+                        "I'm {weight} pounds",
+                        "The scale said {weight}",
+                        "The scale said {weight} today",
+                        "I weigh {weight} pounds"
+                    ]
+                },
+                {
+                    "name": "GetFoodInfo",
+                    "slots": [
+                        {
+                            "name": "nutritionInfo",
+                            "type": "nutritionInfo"
+                        },
+                        {
+                            "name": "foodItem",
+                            "type": "AMAZON.Food"
                         }
-                    },
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "Breakfast",
-                            "synonyms": []
+                    ],
+                    "samples": [
+                        "How many {nutritionInfo} are in a {foodItem}"
+                    ]
+                },
+                {
+                    "name": "Report",
+                    "slots": [
+                        {
+                            "name": "Weight",
+                            "type": "AMAZON.NUMBER"
                         }
-                    },
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "Dinner",
-                            "synonyms": []
+                    ],
+                    "samples": [
+                        "Do a report"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "values": [
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "Midnight snack",
+                                "synonyms": []
+                            }
+                        },
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "Snack",
+                                "synonyms": []
+                            }
+                        },
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "Brunch",
+                                "synonyms": []
+                            }
+                        },
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "Breakfast",
+                                "synonyms": []
+                            }
+                        },
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "Dinner",
+                                "synonyms": []
+                            }
+                        },
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "Lunch",
+                                "synonyms": []
+                            }
                         }
-                    },
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "Lunch",
-                            "synonyms": []
+                    ],
+                    "name": "eatingTime"
+                },
+                {
+                    "values": [
+                        {
+                            "id": "",
+                            "name": {
+                                "value": "calories",
+                                "synonyms": []
+                            }
                         }
-                    }
-                ]
-            },
-            {
-                "name": "nutritionInfo",
-                "values": [
-                    {
-                        "id": "",
-                        "name": {
-                            "value": "calories",
-                            "synonyms": []
-                        }
-                    }
-                ]
-            }
-        ],
-        "intents": [
-            {
-                "name": "addFood",
-                "samples": [
-                    "i just ate {foodItem}",
-                    "i had {foodItem}",
-                    "{foodItem} for {eatingTime}",
-                    "i ate {foodItem} at {eatingTime}",
-                    "i ate {foodItem} for {eatingTime}",
-                    "i had {foodItem} for {eatingTime}",
-                    "i ate {foodItem}",
-                    "i ate {foodItem} today"
-                ],
-                "slots": [
-                    {
-                        "name": "foodItem",
-                        "type": "AMAZON.Food"
-                    },
-                    {
-                        "name": "eatingTime",
-                        "type": "eatingTime"
-                    }
-                ]
-            },
-            {
-                "name": "AMAZON.CancelIntent",
-                "samples": []
-            },
-            {
-                "name": "AMAZON.HelpIntent",
-                "samples": []
-            },
-            {
-                "name": "AMAZON.StopIntent",
-                "samples": []
-            },
-            {
-                "name": "ChangeNutritionist",
-                "samples": [
-                    "I would like add a nutritionist",
-                    "Add nutritionist",
-                    "Add Doctor",
-                    "I would like to add a doctor",
-                    "Change nutritionist",
-                    "Change doctor",
-                    "I would like to change my doctor"
-                ],
-                "slots": []
-            },
-            {
-                "name": "ChangeWeight",
-                "samples": [
-                    "Change my weight to {weight}",
-                    "I weigh {weight}",
-                    "I weighed {weight} today",
-                    "I'm {weight} pounds",
-                    "The scale said {weight}",
-                    "The scale said {weight} today",
-                    "I weigh {weight} pounds"
-                ],
-                "slots": [
-                    {
-                        "name": "weight",
-                        "type": "AMAZON.NUMBER"
-                    }
-                ]
-            },
-            {
-                "name": "GetFoodInfo",
-                "samples": [
-                    "How many {nutritionInfo} are in a {foodItem}"
-                ],
-                "slots": [
-                    {
-                        "name": "nutritionInfo",
-                        "type": "nutritionInfo"
-                    },
-                    {
-                        "name": "foodItem",
-                        "type": "AMAZON.Food"
-                    }
-                ]
-            },
-            {
-                "name": "Report",
-                "samples": [
-                    "Do a report"
-                ],
-                "slots": [
-                    {
-                        "name": "Weight",
-                        "type": "AMAZON.NUMBER"
-                    }
-                ]
-            }
-        ],
-        "invocationName": "nutrition app"
+                    ],
+                    "name": "nutritionInfo"
+                }
+            ]
+        }
     }
 }
