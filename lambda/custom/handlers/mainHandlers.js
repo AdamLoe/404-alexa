@@ -36,12 +36,8 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 		}
 	},
 
-	"FoodHistory": function() {
-		this.emit(":ask", "Food History functionality not implemented yet");
-	},
-
 	"NewSession": function () {
-		this.emit(":ask", "Welcome user: " + this.event.session.user.userId, "You gonna do something or did you just open this to hear my shitty intro");
+		this.emit(":ask", "Welcome user");
 	},
 
 	"LaunchRequest": function () {

@@ -1,6 +1,3 @@
-/**
- * Created by Adam on 3/14/2018.
- */
 
 var logger = function(event, context) {
 	// Get intent type/name, so LaunchRequest, NewSession, ChangeWeight, AddFood
