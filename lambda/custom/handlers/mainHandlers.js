@@ -5,7 +5,7 @@ var constants = require("../constants/constants");
 var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 	"ChangeWeight": function() {
 		var weight = this.event.request.intent.slots.weight.value;
-		this.emit(":ask", "Thanks for telling me you weigh" + weight + "pounds");
+		this.emit(":ask", "Thanks for telling me you weigh " + weight + " pounds");
 	},
 	"addFood": function() {
 		var food = this.event.request.intent.slots.foodItem;
@@ -29,7 +29,7 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 			if (calories === -1 ) {
 				this.emit(":ask", "We dont support that item");
 			} else {
-				this.emit(":ask", "a" + foodItem + " has " + calories + " calories", "Is there any else you would like to know");
+				this.emit(":ask", "a " + foodItem + " has " + calories + " calories", "Is there any else you would like to know");
 			}
 		} else {
 			this.emit(":ask", "nutrition info type not supported");
