@@ -39,6 +39,7 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 
 	"NewSession": function () {
 		var state = this.event.session.attributes;
+        if (state.weight === null) {
         	this.emit(":ask", "Welcome User")
 		} else {
         	this.emit(":ask", "Welcome User that weighs " + state.weight + " pounds")

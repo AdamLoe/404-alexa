@@ -2,3 +2,5 @@
 .idea*
 /lambda/custom/helpers/knexfile.js
 .ask*
+lambda/custom/test.js
+lambda/custom/test.js
