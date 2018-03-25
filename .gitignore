@@ -1,4 +1,4 @@
 /lambda/custom/node_modules*
 .idea*
-/lambda/custom/knexfile.js
+/lambda/custom/helpers/knexfile.js
 .ask*

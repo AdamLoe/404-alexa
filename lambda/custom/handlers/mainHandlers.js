@@ -6,6 +6,7 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 	"ChangeWeight": function() {
 		var weight = this.event.request.intent.slots.weight.value;
 		this.emit(":ask", "Thanks for telling me you weigh " + weight + " pounds");
+        this.event.session.attributes.weight = weight;
 	},
 	"addFood": function() {
 		var food = this.event.request.intent.slots.foodItem;
@@ -37,7 +38,11 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 	},
 
 	"NewSession": function () {
-		this.emit(":ask", "Welcome user");
+		var state = this.event.session.attributes;
+        	this.emit(":ask", "Welcome User")
+		} else {
+        	this.emit(":ask", "Welcome User that weighs " + state.weight + " pounds")
+		}
 	},
 
 	"LaunchRequest": function () {
