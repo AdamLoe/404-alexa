@@ -1,10 +1,6 @@
-.*
-/.*
-
 /lambda/custom/node_modules*
-/lambda/custom/package-lock.json
-
-.idea
-/.idea/*
-
-.eslintrc
+.idea*
+/lambda/custom/helpers/knexfile.js
+.ask*
+lambda/custom/test.js
+lambda/custom/test.js
