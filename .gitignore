@@ -4,3 +4,4 @@
 .ask*
 lambda/custom/test.js
 lambda/custom/test.js
+lambda/custom/knexfile.js

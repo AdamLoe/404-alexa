@@ -1,12 +1,10 @@
-var Alexa = require("alexa-sdk");
+var knex = require('../knexfile');
 
-var constants = require("../constants/constants");
-
-var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
+module.exports = {
 	"ChangeWeight": function() {
 		var weight = this.event.request.intent.slots.weight.value;
 		this.emit(":ask", "Thanks for telling me you weigh " + weight + " pounds");
-        this.event.session.attributes.weight = weight;
+        this.attributes.weight = weight;
 	},
 	"addFood": function() {
 		var food = this.event.request.intent.slots.foodItem;
@@ -16,7 +14,6 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 		var foodItem = this.event.request.intent.slots.foodItem.value;
 		var infoToGet = this.event.request.intent.slots.nutritionInfo.value;
 		console.log("GetFoodInfo", foodItem, infoToGet);
-
 		if (infoToGet === "calories") {
 			var calories = -1;
 			switch(foodItem) {
@@ -36,20 +33,43 @@ var mainHandlers = Alexa.CreateStateHandler(constants.states.MAIN, {
 			this.emit(":ask", "nutrition info type not supported");
 		}
 	},
-
-	"NewSession": function () {
-		var state = this.event.session.attributes;
-        if (state.weight === null) {
-        	this.emit(":ask", "Welcome User")
+	"SetGoal": function() {
+		var dialogState = this.event.request.dialogState;
+		console.log('Set Goal slots', this.event.request.intent.slots);
+		if (dialogState !== 'COMPLETED') {
+			console.log('Delegate slots');
+			this.emit(':delegate');
 		} else {
-        	this.emit(":ask", "Welcome User that weighs " + state.weight + " pounds")
+			var goalToGet = this.event.request.intent.slots.goalToGet.id;
+			goalToGet = int(goalToGet);
+			knex('alexa_goal_log')
+					.insert({
+						"userID": 1,
+						"goalID": goalToGet
+					})
+					.then(function(data){
+							console.log('Server Responded')
+							this.emit(':ask', 'Thanks for setting a goal')
+					})
+					.catch(function(err){
+						console.log('err setting goal', err)
+						this.emit(':ask', 'error setting a goal')
+					})
 		}
 	},
-
-	"LaunchRequest": function () {
-		this.emit(":ask", "Congrats, you launched the skill", "You gonna do something or did you just open this to hear my shitty intro");
+	"Unhandled": function() {
+			this.emit(':ask', 'I have no clue what the fuck you just did');
 	}
+};
 
-});
-
-module.exports = mainHandlers;
+/*
+goalsJSON = {
+	"Goal": "lose weight",
+	"PoundsPerWeek":
+	"Weight": 180,
+	"WeightHistory": [
+		[ "Weight": 179, "Date", DateTime]
+		[ "Weight": 178, "Date", DateTime]
+	]
+}
+*/

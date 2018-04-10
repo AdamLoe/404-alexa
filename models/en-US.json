@@ -1,163 +1,1452 @@
 {
-    "interactionModel": {
-        "languageModel": {
-            "invocationName": "nutrition app",
-            "intents": [
-                {
-                    "name": "addFood",
-                    "slots": [
-                        {
-                            "name": "foodItem",
-                            "type": "AMAZON.Food"
-                        },
-                        {
-                            "name": "eatingTime",
-                            "type": "eatingTime"
-                        }
-                    ],
-                    "samples": [
-                        "i just ate {foodItem}",
-                        "i had {foodItem}",
-                        "{foodItem} for {eatingTime}",
-                        "i ate {foodItem} at {eatingTime}",
-                        "i ate {foodItem} for {eatingTime}",
-                        "i had {foodItem} for {eatingTime}",
-                        "i ate {foodItem}",
-                        "i ate {foodItem} today"
-                    ]
-                },
-                {
-                    "name": "AMAZON.CancelIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.HelpIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.StopIntent",
-                    "samples": []
-                },
-                {
-                    "name": "ChangeNutritionist",
-                    "samples": [
-                        "I would like add a nutritionist",
-                        "Add nutritionist",
-                        "Add Doctor",
-                        "I would like to add a doctor",
-                        "Change nutritionist",
-                        "Change doctor",
-                        "I would like to change my doctor"
-                    ]
-                },
-                {
-                    "name": "ChangeWeight",
-                    "slots": [
-                        {
-                            "name": "weight",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "Change my weight to {weight}",
-                        "I weigh {weight}",
-                        "I weighed {weight} today",
-                        "I'm {weight} pounds",
-                        "The scale said {weight}",
-                        "The scale said {weight} today",
-                        "I weigh {weight} pounds"
-                    ]
-                },
-                {
-                    "name": "GetFoodInfo",
-                    "slots": [
-                        {
-                            "name": "nutritionInfo",
-                            "type": "nutritionInfo"
-                        },
-                        {
-                            "name": "foodItem",
-                            "type": "AMAZON.Food"
-                        }
-                    ],
-                    "samples": [
-                        "How many {nutritionInfo} are in a {foodItem}"
-                    ]
-                },
-                {
-                    "name": "Report",
-                    "slots": [
-                        {
-                            "name": "Weight",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "Do a report"
-                    ]
-                }
-            ],
-            "types": [
-                {
-                    "values": [
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "Midnight snack",
-                                "synonyms": []
-                            }
-                        },
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "Snack",
-                                "synonyms": []
-                            }
-                        },
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "Brunch",
-                                "synonyms": []
-                            }
-                        },
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "Breakfast",
-                                "synonyms": []
-                            }
-                        },
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "Dinner",
-                                "synonyms": []
-                            }
-                        },
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "Lunch",
-                                "synonyms": []
-                            }
-                        }
-                    ],
-                    "name": "eatingTime"
-                },
-                {
-                    "values": [
-                        {
-                            "id": "",
-                            "name": {
-                                "value": "calories",
-                                "synonyms": []
-                            }
-                        }
-                    ],
-                    "name": "nutritionInfo"
-                }
-            ]
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "nutrition app",
+      "intents": [
+        {
+          "name": "addFood",
+          "slots": [
+            {
+              "name": "foodItem",
+              "type": "AMAZON.Food"
+            }
+          ],
+          "samples": [
+            "i just ate {foodItem}",
+            "i had {foodItem}",
+            "i ate {foodItem}",
+            "i ate {foodItem} today"
+          ]
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "ChangeWeight",
+          "slots": [
+            {
+              "name": "weight",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "pointWeight",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "i weigh {weight} point {pointWeight}",
+            "I weigh {weight} point {pointWeight} pounds",
+            "Change my weight to {weight}",
+            "I weigh {weight}",
+            "I weighed {weight} today",
+            "I'm {weight} pounds",
+            "The scale said {weight}",
+            "The scale said {weight} today",
+            "I weigh {weight} pounds"
+          ]
+        },
+        {
+          "name": "GetFoodInfo",
+          "slots": [
+            {
+              "name": "nutritionInfo",
+              "type": "nutritionInfo"
+            },
+            {
+              "name": "foodItem",
+              "type": "AMAZON.Food"
+            }
+          ],
+          "samples": [
+            "How many {nutritionInfo} are in a {foodItem}"
+          ]
+        },
+        {
+          "name": "Report",
+          "slots": [
+            {
+              "name": "FirstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "samples": [
+                "My name is {FirstName}",
+                "{FirstName}",
+                "I am {FirstName}"
+              ]
+            },
+            {
+              "name": "HeightFoot",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "I'm {HeightFoot} foot {HeightInches} inches",
+                "I'm {HeightFoot} foot {HeightInches}",
+                "{HeightFoot} foot {HeightInches}",
+                "I am {HeightFoot} foot {HeightInches} inches",
+                "I am {HeightFoot} foot {HeightInches}"
+              ]
+            },
+            {
+              "name": "HeightInches",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "i'm {HeightFoot} foot {HeightInches} inches",
+                "i'm {HeightFoot} foot {HeightInches}",
+                "{HeightFoot} foot {HeightInches} inches",
+                "i am {HeightFoot} foot {HeightInches}",
+                "I am {HeightFoot} foot {HeightInches} inches",
+                "{HeightFoot} foot {HeightInches}"
+              ]
+            },
+            {
+              "name": "Weight",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{Weight} pounds",
+                "i weigh {Weight}",
+                "{Weight}"
+              ]
+            },
+            {
+              "name": "Birthday",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{Birthday}",
+                "Born on {Birthday}",
+                "I was born on {Birthday}"
+              ]
+            },
+            {
+              "name": "Gender",
+              "type": "gender",
+              "samples": [
+                "{Gender}",
+                "i am {Gender}",
+                "i'm {Gender}"
+              ]
+            },
+            {
+              "name": "ActivityLevel",
+              "type": "MultipleChoice",
+              "samples": [
+                "{ActivityLevel}",
+                "uhh {ActivityLevel}"
+              ]
+            },
+            {
+              "name": "FoodAllergies",
+              "type": "MultipleChoice"
+            },
+            {
+              "name": "SpecialDiets",
+              "type": "MultipleChoice"
+            },
+            {
+              "name": "Alcoholic",
+              "type": "Boolean",
+              "samples": [
+                "{Alcoholic}"
+              ]
+            },
+            {
+              "name": "Smoker",
+              "type": "Boolean",
+              "samples": [
+                "{Smoker}"
+              ]
+            },
+            {
+              "name": "Injury",
+              "type": "Boolean",
+              "samples": [
+                "{Injury}"
+              ]
+            },
+            {
+              "name": "SleepEight",
+              "type": "Boolean",
+              "samples": [
+                "{SleepEight}"
+              ]
+            },
+            {
+              "name": "CupsOfWater",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{CupsOfWater} cups"
+              ]
+            },
+            {
+              "name": "VitaminTaker",
+              "type": "Boolean",
+              "samples": [
+                "{VitaminTaker}"
+              ]
+            },
+            {
+              "name": "VitaminsTaken",
+              "type": "testLiteral"
+            },
+            {
+              "name": "StressLevel",
+              "type": "StressLevel"
+            },
+            {
+              "name": "HowOftenVisit",
+              "type": "MultipleChoice",
+              "samples": [
+                "{HowOftenVisit}"
+              ]
+            },
+            {
+              "name": "StressEater",
+              "type": "Boolean",
+              "samples": [
+                "{StressEater}"
+              ]
+            },
+            {
+              "name": "FoodIsComfort",
+              "type": "Boolean",
+              "samples": [
+                "{FoodIsComfort}"
+              ]
+            },
+            {
+              "name": "WeightTrouble",
+              "type": "MultipleChoice",
+              "samples": [
+                "{WeightTrouble}"
+              ]
+            },
+            {
+              "name": "Occupation",
+              "type": "testLiteral",
+              "samples": [
+                "{Occupation}"
+              ]
+            },
+            {
+              "name": "PregnantBefore",
+              "type": "Boolean",
+              "samples": [
+                "{PregnantBefore}"
+              ]
+            },
+            {
+              "name": "PregnantOrNursing",
+              "type": "Boolean",
+              "samples": [
+                "{PregnantOrNursing}"
+              ]
+            },
+            {
+              "name": "FoodAllergyOne",
+              "type": "FoodAllergies",
+              "samples": [
+                "I am sensitive to {FoodAllergyOne} and {FoodAllergyTwo} . ",
+                "I am sensitive to {FoodAllergyOne} .",
+                "I am allergic to {FoodAllergyOne} and {FoodAllergyTwo} .",
+                "I am allergic to {FoodAllergyOne} ."
+              ]
+            },
+            {
+              "name": "FoodAllergyTwo",
+              "type": "FoodAllergies"
+            },
+            {
+              "name": "DietOne",
+              "type": "Diets"
+            },
+            {
+              "name": "DietTwo",
+              "type": "Diets"
+            },
+            {
+              "name": "MedicalConditionOne",
+              "type": "MedicalConditions",
+              "samples": [
+                "I suffer from {MedicalConditionOne} and {MedicalConditionTwo} .",
+                "I experience {MedicalConditionOne} and {MedicalConditionTwo} .",
+                "I have {MedicalConditionOne}  and {MedicalConditionTwo} . ",
+                "I experience {MedicalConditionOne} .",
+                "I suffer from {MedicalConditionOne} .",
+                "I have {MedicalConditionOne} ."
+              ]
+            },
+            {
+              "name": "MedicalConditionTwo",
+              "type": "MedicalConditions"
+            }
+          ],
+          "samples": [
+            "Do a report"
+          ]
         }
-    }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "id": "1",
+              "name": {
+                "value": "Yes",
+                "synonyms": [
+                  "Yep"
+                ]
+              }
+            },
+            {
+              "id": "0",
+              "name": {
+                "value": "No",
+                "synonyms": [
+                  "Nope"
+                ]
+              }
+            }
+          ],
+          "name": "Boolean"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "male",
+                "synonyms": [
+                  "man"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "female",
+                "synonyms": [
+                  "woman"
+                ]
+              }
+            }
+          ],
+          "name": "gender"
+        },
+        {
+          "values": [
+            {
+              "id": "1",
+              "name": {
+                "value": "A"
+              }
+            },
+            {
+              "id": "2",
+              "name": {
+                "value": "B"
+              }
+            },
+            {
+              "id": "3",
+              "name": {
+                "value": "C"
+              }
+            },
+            {
+              "id": "4",
+              "name": {
+                "value": "D"
+              }
+            },
+            {
+              "id": "5",
+              "name": {
+                "value": "E"
+              }
+            },
+            {
+              "id": "6",
+              "name": {
+                "value": "F"
+              }
+            },
+            {
+              "id": "7",
+              "name": {
+                "value": "G"
+              }
+            },
+            {
+              "id": "8",
+              "name": {
+                "value": "H"
+              }
+            },
+            {
+              "id": "9",
+              "name": {
+                "value": "I"
+              }
+            },
+            {
+              "id": "10",
+              "name": {
+                "value": "J"
+              }
+            },
+            {
+              "id": "11",
+              "name": {
+                "value": "K"
+              }
+            },
+            {
+              "id": "12",
+              "name": {
+                "value": "L"
+              }
+            },
+            {
+              "id": "13",
+              "name": {
+                "value": "M"
+              }
+            },
+            {
+              "id": "14",
+              "name": {
+                "value": "N"
+              }
+            },
+            {
+              "id": "15",
+              "name": {
+                "value": "O"
+              }
+            },
+            {
+              "id": "16",
+              "name": {
+                "value": "P"
+              }
+            },
+            {
+              "id": "17",
+              "name": {
+                "value": "Q"
+              }
+            },
+            {
+              "id": "18",
+              "name": {
+                "value": "R"
+              }
+            },
+            {
+              "id": "19",
+              "name": {
+                "value": "S"
+              }
+            },
+            {
+              "id": "20",
+              "name": {
+                "value": "T"
+              }
+            },
+            {
+              "id": "21",
+              "name": {
+                "value": "U"
+              }
+            },
+            {
+              "id": "22",
+              "name": {
+                "value": "V"
+              }
+            },
+            {
+              "id": "23",
+              "name": {
+                "value": "W"
+              }
+            },
+            {
+              "id": "24",
+              "name": {
+                "value": "X"
+              }
+            },
+            {
+              "id": "25",
+              "name": {
+                "value": "Y"
+              }
+            },
+            {
+              "id": "26",
+              "name": {
+                "value": "Z"
+              }
+            }
+          ],
+          "name": "MultipleChoice"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "calories"
+              }
+            }
+          ],
+          "name": "nutritionInfo"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "literally anything"
+              }
+            }
+          ],
+          "name": "testLiteral"
+        },
+        {
+          "values": [
+            {
+              "id": "4",
+              "name": {
+                "value": "Severe",
+                "synonyms": [
+                  "Always stressed",
+                  "Always"
+                ]
+              }
+            },
+            {
+              "id": "3",
+              "name": {
+                "value": "High",
+                "synonyms": [
+                  "Often",
+                  "Often Stressed"
+                ]
+              }
+            },
+            {
+              "id": "2",
+              "name": {
+                "value": "Moderate",
+                "synonyms": [
+                  "Sometimes stressed",
+                  "Sometimes"
+                ]
+              }
+            },
+            {
+              "id": "1",
+              "name": {
+                "value": "Low",
+                "synonyms": [
+                  "never",
+                  "never stressed"
+                ]
+              }
+            }
+          ],
+          "name": "StressLevel"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Other"
+              }
+            },
+            {
+              "name": {
+                "value": "Anorexia",
+                "synonyms": [
+                  "Bulimia"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "PTSD"
+              }
+            },
+            {
+              "name": {
+                "value": "OCD"
+              }
+            },
+            {
+              "name": {
+                "value": "Depression",
+                "synonyms": [
+                  "Depressed"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Bipolar",
+                "synonyms": [
+                  "Bipolar Disorder"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "ADD",
+                "synonyms": [
+                  "ADHD"
+                ]
+              }
+            }
+          ],
+          "name": "MentalCondition"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Other"
+              }
+            },
+            {
+              "name": {
+                "value": "Milk",
+                "synonyms": [
+                  "lactose intolerant"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Food Dyes",
+                "synonyms": [
+                  "green food dye",
+                  "blue food dye",
+                  "Red food dye"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Gelatin"
+              }
+            },
+            {
+              "name": {
+                "value": "Theobromine"
+              }
+            },
+            {
+              "name": {
+                "value": "Sulfites"
+              }
+            },
+            {
+              "name": {
+                "value": "soy"
+              }
+            },
+            {
+              "name": {
+                "value": "Shellfish"
+              }
+            },
+            {
+              "name": {
+                "value": "Artificial sweeteners"
+              }
+            },
+            {
+              "name": {
+                "value": "Peanuts"
+              }
+            },
+            {
+              "name": {
+                "value": "Gluten"
+              }
+            },
+            {
+              "name": {
+                "value": "Eggs"
+              }
+            },
+            {
+              "name": {
+                "value": "Dairy ",
+                "synonyms": [
+                  "lactose intolerant"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Corn products"
+              }
+            },
+            {
+              "name": {
+                "value": "Citrus"
+              }
+            }
+          ],
+          "name": "FoodAllergies"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Other "
+              }
+            },
+            {
+              "name": {
+                "value": "Sonoma"
+              }
+            },
+            {
+              "name": {
+                "value": "Raw-Food"
+              }
+            },
+            {
+              "name": {
+                "value": "Mediterranean"
+              }
+            },
+            {
+              "name": {
+                "value": "Gluten-free"
+              }
+            },
+            {
+              "name": {
+                "value": "DASH"
+              }
+            },
+            {
+              "name": {
+                "value": "Atkins"
+              }
+            },
+            {
+              "name": {
+                "value": "Pescetarian"
+              }
+            },
+            {
+              "name": {
+                "value": "Low-Fat"
+              }
+            },
+            {
+              "name": {
+                "value": "Low-Sugar"
+              }
+            },
+            {
+              "name": {
+                "value": "Low-Cholesterol"
+              }
+            },
+            {
+              "name": {
+                "value": "Low-Sodium"
+              }
+            },
+            {
+              "name": {
+                "value": "Low-Carb"
+              }
+            },
+            {
+              "name": {
+                "value": "Paleo"
+              }
+            },
+            {
+              "name": {
+                "value": "Ketogenic",
+                "synonyms": [
+                  "Keto"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Vegan"
+              }
+            },
+            {
+              "name": {
+                "value": "Halal"
+              }
+            },
+            {
+              "name": {
+                "value": "Kosher"
+              }
+            },
+            {
+              "name": {
+                "value": "Vegetarian"
+              }
+            }
+          ],
+          "name": "Diets"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Other"
+              }
+            },
+            {
+              "name": {
+                "value": "Hormonal imbalance"
+              }
+            },
+            {
+              "name": {
+                "value": "Metabolic disorder",
+                "synonyms": [
+                  "unable to gain weight",
+                  "unable to lose weight"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "High blood pressure"
+              }
+            },
+            {
+              "name": {
+                "value": "Thyroid disease"
+              }
+            },
+            {
+              "name": {
+                "value": "Gallbladder disease"
+              }
+            },
+            {
+              "name": {
+                "value": "Gout"
+              }
+            },
+            {
+              "name": {
+                "value": "Sleep apnea"
+              }
+            },
+            {
+              "name": {
+                "value": "Fatty liver disease"
+              }
+            },
+            {
+              "name": {
+                "value": "Lymphedema"
+              }
+            },
+            {
+              "name": {
+                "value": "Arthritis"
+              }
+            },
+            {
+              "name": {
+                "value": "Hernia"
+              }
+            },
+            {
+              "name": {
+                "value": "Acid reflux"
+              }
+            },
+            {
+              "name": {
+                "value": "Clogged arteries"
+              }
+            },
+            {
+              "name": {
+                "value": "Congestive heart failure"
+              }
+            },
+            {
+              "name": {
+                "value": "Enlarged heart"
+              }
+            },
+            {
+              "name": {
+                "value": "Heart disease"
+              }
+            },
+            {
+              "name": {
+                "value": "Type 2 diabetes"
+              }
+            },
+            {
+              "name": {
+                "value": "Type 1 diabetes"
+              }
+            }
+          ],
+          "name": "MedicalConditions"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "Report",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent-Report"
+          },
+          "slots": [
+            {
+              "name": "FirstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-FirstName"
+              }
+            },
+            {
+              "name": "HeightFoot",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-HeightFoot"
+              }
+            },
+            {
+              "name": "HeightInches",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-HeightInches"
+              }
+            },
+            {
+              "name": "Weight",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-Weight"
+              }
+            },
+            {
+              "name": "Birthday",
+              "type": "AMAZON.DATE",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-Birthday"
+              }
+            },
+            {
+              "name": "Gender",
+              "type": "gender",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-Gender"
+              }
+            },
+            {
+              "name": "ActivityLevel",
+              "type": "MultipleChoice",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-ActivityLevel"
+              }
+            },
+            {
+              "name": "FoodAllergies",
+              "type": "MultipleChoice",
+              "elicitationRequired": false,
+              "confirmationRequired": false
+            },
+            {
+              "name": "SpecialDiets",
+              "type": "MultipleChoice",
+              "elicitationRequired": false,
+              "confirmationRequired": false
+            },
+            {
+              "name": "Alcoholic",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.1182190680867"
+              }
+            },
+            {
+              "name": "Smoker",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.1409263937729"
+              }
+            },
+            {
+              "name": "Injury",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.52818197533"
+              }
+            },
+            {
+              "name": "SleepEight",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.1430699845675"
+              }
+            },
+            {
+              "name": "CupsOfWater",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.174253508038"
+              }
+            },
+            {
+              "name": "VitaminTaker",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.136307820794"
+              }
+            },
+            {
+              "name": "VitaminsTaken",
+              "type": "testLiteral",
+              "elicitationRequired": false,
+              "confirmationRequired": false
+            },
+            {
+              "name": "StressLevel",
+              "type": "StressLevel",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.279132914641.1182416394326"
+              }
+            },
+            {
+              "name": "HowOftenVisit",
+              "type": "MultipleChoice",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.436448384399.616587357662"
+              }
+            },
+            {
+              "name": "StressEater",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.436448384399.29251777102"
+              }
+            },
+            {
+              "name": "FoodIsComfort",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.436448384399.1029369905396"
+              }
+            },
+            {
+              "name": "WeightTrouble",
+              "type": "MultipleChoice",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.436448384399.696002028633"
+              }
+            },
+            {
+              "name": "Occupation",
+              "type": "testLiteral",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.436448384399.1032192001904"
+              }
+            },
+            {
+              "name": "PregnantBefore",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.436448384399.767582230644"
+              }
+            },
+            {
+              "name": "PregnantOrNursing",
+              "type": "Boolean",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1172106105090.28381469288"
+              }
+            },
+            {
+              "name": "FoodAllergyOne",
+              "type": "FoodAllergies",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.536662923397.266341418254"
+              }
+            },
+            {
+              "name": "FoodAllergyTwo",
+              "type": "FoodAllergies",
+              "elicitationRequired": false,
+              "confirmationRequired": false
+            },
+            {
+              "name": "DietOne",
+              "type": "Diets",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.733267037056.303164978585"
+              }
+            },
+            {
+              "name": "DietTwo",
+              "type": "Diets",
+              "elicitationRequired": false,
+              "confirmationRequired": false
+            },
+            {
+              "name": "MedicalConditionOne",
+              "type": "MedicalConditions",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.536662923397.337632423107"
+              }
+            },
+            {
+              "name": "MedicalConditionTwo",
+              "type": "MedicalConditions",
+              "elicitationRequired": false,
+              "confirmationRequired": false
+            }
+          ]
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent-Report",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Okay {FirstName}, our report says you are {HeightFoot} foot {HeightInches} at {Weight} pounds"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-FirstName",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What would you like to be called?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-HeightFoot",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How tall are you?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-HeightInches",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How tall are you?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-Weight",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How much do you weigh"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-Birthday",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your birthday"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-Gender",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your gender, Male or Female"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Intent-Report.IntentSlot-ActivityLevel",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Out these five options, what activity level would you say you were at,  a, little to no exercise, b, sports one to three days a week, c, three to five days week, d, six to seven days a week, or e, hard daily exercise "
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1172106105090.28381469288",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you currently pregnant or nursing?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.1182190680867",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you drink in excess?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.1430699845675",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you regularly sleep at least eight hours a night?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.52818197533",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you have an injury or other condition that prevents regular exercise?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.1409263937729",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you smoke cigarettes or other inhalants?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.174253508038",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "On average, how many cups of water do you drink a day?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.136307820794",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you currently taking any vitamins or other nutritional supplements?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.279132914641.1182416394326",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What do you feel your average stress level is, low, never stressed, moderate, sometimes stressed, or high, always stressed"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1514907811295.111988235239",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you being treated for any of the following mental conditions, add slash adhd,,, bipolar disorder,,, depression,,, ocd,,, ptsd,,, anoxeria slash bulimia... other"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1514907811295.591309562583",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you being treated for any of the following mental conditions, add slash adhd,,, bipolar disorder,,, depression,,, ocd,,, ptsd,,, anoxeria slash bulimia... other"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.436448384399.29251777102",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you feel that you are a stress eater?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.436448384399.1029369905396",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you feel that you often turn to food as a source of comfort?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.436448384399.696002028633",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you have trouble, GAINING,,weight,or,,LOSING,,weight"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.436448384399.1032192001904",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your occupation?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.436448384399.767582230644",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Have you ever been pregnant?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.436448384399.616587357662",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How often will you be seeing your nutritionists, a, less than six times a year, b , six to ten times a year, c ,  more than ten times a year, or d, something else"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.733267037056.303164978585",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "{DietOne} and {DietTwo} . "
+          },
+          {
+            "type": "PlainText",
+            "value": "{DietOne} ."
+          },
+          {
+            "type": "PlainText",
+            "value": "I am doing the {DietOne} . "
+          },
+          {
+            "type": "PlainText",
+            "value": "I am on a {DietOne} {DietTwo} ."
+          },
+          {
+            "type": "PlainText",
+            "value": "I am on the {DietOne} ."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.536662923397.337632423107",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you being treated for any of the following mental conditions, add slash adhd,,, bipolar disorder,,, depression,,, ocd,,, ptsd,,, anoxeria slash bulimia... other"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.536662923397.266341418254",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Fill in food allergy prompt"
+          }
+        ]
+      }
+    ]
+  }
 }

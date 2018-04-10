@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "alexa-sdk": "^1.0.25",
-    "knex": "^0.14.4",
+    "axios": "^0.18.0",
+    "knex": "^0.14.5",
     "mysql": "^2.15.0"
   }
 }

@@ -1,19 +1,20 @@
 
-var logger = function(event, context) {
+var logger = function(event) {
 	// Get intent type/name, so LaunchRequest, NewSession, ChangeWeight, AddFood
 	var intentType = event.request.type;
 	//If its a intentRequest, we will want to display what type of intent
 	if (intentType === "IntentRequest") {
 		intentType = event.request.intent.name;
 		console.log("-----------", intentType, "--- ---------");
-		console.log("slots", event.request.intent.slots);
-		console.log("intent", event.intent);
+		//console.log("slots", event.request.intent.slots);
+		//console.log("intent", event.intent);
+		//console.log('intent', event.request.intent);
 	}
 	else {
 		console.log("-----------", intentType, "--- ---------");
 	}
-	console.log("session", event.session  );
-	console.log("event", JSON.stringify(event, null, 2));
+	//console.log("session", event.session  );
+	//console.log("event", JSON.stringify(event, null, 2));
 	//For full debugging we can just log everything about the requests, but that makes our logs messy
 	/*
     console.log('event', event);
