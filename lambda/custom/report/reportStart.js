@@ -8,5 +8,9 @@ module.exports = function() {
 		console.log("Found slots from dynamoDB");
 		updatedIntent["slots"] = this.attributes.slots;
 	}
+	else {
+		this.attributes.reportState = 0;
+	}
+	this.attributes.slots = updatedIntent["slots"];
 	this.emit(":delegate", updatedIntent);
 };

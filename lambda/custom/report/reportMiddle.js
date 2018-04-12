@@ -1,6 +1,8 @@
 var foodLoop = require("./foodLoop");
 
 var getIntentChanges = (oldIntent, newIntent) => {
+	console.log('oldintent', oldIntent);
+	console.log('newIntent', newIntent);
 	changedIntents = [];
 	for (let key in oldIntent) {
 		if (oldIntent[key].value !== newIntent[key].value) {
@@ -24,6 +26,7 @@ var reportMiddle = function() {
 	this.attributes.slots = slots;
 	var updatedIntent = this.event.request.intent;
 
+	console.log('Report middle called', changedIntents.length, changedIntents);
 	if (changedIntents.length === 0) {
 		this.emit(":delegate");
 	}
@@ -73,13 +76,8 @@ var reportMiddle = function() {
 				break;
 
 			case "FoodLoop":
-				console.log("They ate ", value);
-				if (value === "nothing") {
-					this.emit(":delegate");
-				}
-				else {
-					foodLoop.bind(this)(name, value, updatedIntent);
-				}
+				console.log('FoodLoop called');
+				foodLoop.bind(this)(name, value, updatedIntent);
 				break;
 
 			default:

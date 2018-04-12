@@ -6,6 +6,7 @@ module.exports = {
 	"Report": function() {
 		var dialogState = this.event.request.dialogState;
 		console.log("Report called: ", dialogState);
+		console.log('')
 
 		if (dialogState === "STARTED") {
 			//Load old report from user State
