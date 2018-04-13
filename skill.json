@@ -45,5 +45,16 @@
       "isChildDirected": false,
       "usesPersonalInfo": false
     }
+    "subscriptions": [
+      {
+        "eventName": "SKILL_ENABLED"
+      },
+      {
+        "eventName": "SKILL_DISABLED"
+      },
+      {
+        "eventName": "SKILL_ACCOUNT_LINKED"
+      }
+     ]
   }
 }
