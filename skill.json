@@ -20,6 +20,22 @@
       "category": "EDUCATION_AND_REFERENCE",
       "distributionCountries": []
     },
+    "events": {
+      "endpoint": {
+        "uri": "arn:aws:lambda:us-east-1:616385475223:function:ask-custom-test-default"
+      },
+      "subscriptions": [
+        {
+          "eventName": "SKILL_ENABLED"
+        },
+        {
+          "eventName": "SKILL_DISABLED"
+        },
+        {
+          "eventName": "SKILL_ACCOUNT_LINKED"
+        }
+      ]
+    },
     "apis": {
       "custom": {
         "endpoint": {
@@ -45,16 +61,5 @@
       "isChildDirected": false,
       "usesPersonalInfo": false
     }
-    "subscriptions": [
-      {
-        "eventName": "SKILL_ENABLED"
-      },
-      {
-        "eventName": "SKILL_DISABLED"
-      },
-      {
-        "eventName": "SKILL_ACCOUNT_LINKED"
-      }
-     ]
   }
 }

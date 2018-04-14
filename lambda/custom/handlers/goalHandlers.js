@@ -1,8 +1,6 @@
 var knex = require("../helpers/knexfile");
-var axios = require("../helpers/axiosFile");
 
 var setGoalLog = (goalID, userID) => {  return new Promise((resolve, reject) => {
-
     console.log('setGoalLogcalled', goalID, userID);
 
 		knex("alexa_goal_log")
@@ -19,7 +17,6 @@ var setGoalLog = (goalID, userID) => {  return new Promise((resolve, reject) => 
 })};
 
 var getGoalLogID = (goalID, userID) => {  return new Promise((resolve, reject) => {
-
     console.log('getGoalLogID called', goalID, userID);
 
 		knex("alexa_goal_log")
@@ -41,7 +38,6 @@ var getGoalLogID = (goalID, userID) => {  return new Promise((resolve, reject) =
 })};
 
 var updateGoalLog = (goalLogID, goalValue) => {  return new Promise((resolve, reject) => {
-
     console.log('updateGoalLog', goalLogID, goalValue);
 
         knex("alexa_goal_archive")

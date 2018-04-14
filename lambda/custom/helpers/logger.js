@@ -13,6 +13,7 @@ var logger = function(event) {
 	else {
 		console.log("-----------", intentType, "--- ---------");
 	}
+
 	//console.log("session", event.session  );
 	//console.log("event", JSON.stringify(event, null, 2));
 	//For full debugging we can just log everything about the requests, but that makes our logs messy

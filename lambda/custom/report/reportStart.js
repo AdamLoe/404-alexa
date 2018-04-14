@@ -7,9 +7,10 @@ module.exports = function() {
 	if (this.attributes.slots !== null) {
 		console.log("Found slots from dynamoDB");
 		updatedIntent["slots"] = this.attributes.slots;
-	}
-	else {
+	} else {
 		this.attributes.reportState = 0;
+		this.attributes.foodLog = [];
+		this.attributes.servingFoods = [];
 	}
 	this.attributes.slots = updatedIntent["slots"];
 	this.emit(":delegate", updatedIntent);

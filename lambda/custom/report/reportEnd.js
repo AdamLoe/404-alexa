@@ -38,7 +38,7 @@ module.exports = function() {
 	var report = {
 		//Adding foodlog,
 		userid: this.event.session.user.userId,
-		foodlog: this.attributes.foodlog,
+		foodlog: this.attributes.foodLog,
 		heightft: slots.HeightFood,
 		heightin: slots.HeightInches,
 		weight: slots.Weight,

@@ -4,9 +4,9 @@ var reportEnd = require("./reportEnd");
 
 module.exports = {
 	"Report": function() {
-		var dialogState = this.event.request.dialogState;
+		let dialogState = this.event.request.dialogState;
 		console.log("Report called: ", dialogState);
-		console.log('')
+		console.log('');
 
 		if (dialogState === "STARTED") {
 			//Load old report from user State
