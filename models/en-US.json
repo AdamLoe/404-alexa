@@ -75,6 +75,7 @@
             }
           ],
           "samples": [
+            "How much {nutritionInfo} is in a {foodItem}",
             "How many {nutritionInfo} are in a {foodItem}"
           ]
         },
@@ -82,10 +83,29 @@
           "name": "Report",
           "slots": [
             {
-              "name": "FoodLoop",
-              "type": "testLiteral",
+              "name": "Birthday",
+              "type": "AMAZON.DATE",
               "samples": [
-                "{FoodLoop}"
+                "{Birthday}",
+                "Born on {Birthday}",
+                "I was born on {Birthday}"
+              ]
+            },
+            {
+              "name": "Gender",
+              "type": "gender",
+              "samples": [
+                "{Gender}",
+                "i am {Gender}",
+                "i'm {Gender}"
+              ]
+            },
+            {
+              "name": "ActivityLevel",
+              "type": "MultipleChoice",
+              "samples": [
+                "{ActivityLevel}",
+                "uhh {ActivityLevel}"
               ]
             },
             {
@@ -133,35 +153,12 @@
               ]
             },
             {
-              "name": "Birthday",
-              "type": "AMAZON.DATE",
-              "samples": [
-                "{Birthday}",
-                "Born on {Birthday}",
-                "I was born on {Birthday}"
-              ]
-            },
-            {
-              "name": "Gender",
-              "type": "gender",
-              "samples": [
-                "{Gender}",
-                "i am {Gender}",
-                "i'm {Gender}"
-              ]
-            },
-            {
-              "name": "ActivityLevel",
-              "type": "MultipleChoice",
-              "samples": [
-                "{ActivityLevel}",
-                "uhh {ActivityLevel}"
-              ]
-            },
-            {
               "name": "FoodAllergyOne",
               "type": "FoodAllergies",
               "samples": [
+                "I don't have any of those",
+                "Nope",
+                "NO",
                 "I am sensitive to {FoodAllergyOne} and {FoodAllergyTwo} . ",
                 "I am sensitive to {FoodAllergyOne} .",
                 "I am allergic to {FoodAllergyOne} and {FoodAllergyTwo} .",
@@ -169,23 +166,15 @@
               ]
             },
             {
-              "name": "FoodAllergyTwo",
-              "type": "FoodAllergies",
-              "samples": [
-                "{FoodAllergyTwo}"
-              ]
-            },
-            {
               "name": "DietOne",
-              "type": "Diets"
-            },
-            {
-              "name": "DietTwo",
-              "type": "Diets"
-            },
-            {
-              "name": "SpecialDiets",
-              "type": "MultipleChoice"
+              "type": "Diets",
+              "samples": [
+                "I am on the {DietOne} .",
+                "I am on a {DietOne} {DietTwo} .",
+                "I am doing the {DietOne} . ",
+                "{DietOne} .",
+                "{DietOne} and {DietTwo} ."
+              ]
             },
             {
               "name": "Smoker",
@@ -216,9 +205,19 @@
               ]
             },
             {
+              "name": "FoodLoop",
+              "type": "testLiteral",
+              "samples": [
+                "{FoodLoop}"
+              ]
+            },
+            {
               "name": "MedicalConditionOne",
               "type": "MedicalConditions",
               "samples": [
+                "Never",
+                "Nope",
+                "No",
                 "I suffer from {MedicalConditionOne} and {MedicalConditionTwo} .",
                 "I experience {MedicalConditionOne} and {MedicalConditionTwo} .",
                 "I have {MedicalConditionOne}  and {MedicalConditionTwo} . ",
@@ -226,10 +225,6 @@
                 "I suffer from {MedicalConditionOne} .",
                 "I have {MedicalConditionOne} ."
               ]
-            },
-            {
-              "name": "MedicalConditionTwo",
-              "type": "MedicalConditions"
             },
             {
               "name": "CupsOfWater",
@@ -246,10 +241,6 @@
               ]
             },
             {
-              "name": "VitaminsTaken",
-              "type": "testLiteral"
-            },
-            {
               "name": "StressLevel",
               "type": "StressLevel"
             },
@@ -257,6 +248,9 @@
               "name": "MentalConditionOne",
               "type": "MentalCondition",
               "samples": [
+                "Never",
+                "Nope",
+                "No",
                 "{MentalConditionOne} and {MentalConditionTwo} ",
                 "{MentalConditionOne}",
                 "i have {MentalConditionOne}",
@@ -265,10 +259,6 @@
                 "I suffer from {MentalConditionOne} and {MentalConditionTwo}",
                 ""
               ]
-            },
-            {
-              "name": "MentalConditionTwo",
-              "type": "MentalCondition"
             },
             {
               "name": "HowOftenVisit",
@@ -316,15 +306,15 @@
               ]
             },
             {
-              "name": "ExerciseUnit",
-              "type": "minutesOrHours"
-            },
-            {
               "name": "Caffeine",
               "type": "testLiteral",
               "samples": [
                 "{Caffeine}"
               ]
+            },
+            {
+              "name": "VitaminsTaken",
+              "type": "testLiteral"
             },
             {
               "name": "PregnantBefore",
@@ -339,6 +329,26 @@
               "samples": [
                 "{PregnantOrNursing}"
               ]
+            },
+            {
+              "name": "FoodAllergyTwo",
+              "type": "FoodAllergies"
+            },
+            {
+              "name": "MedicalConditionTwo",
+              "type": "MedicalConditions"
+            },
+            {
+              "name": "MentalConditionTwo",
+              "type": "MentalCondition"
+            },
+            {
+              "name": "DietTwo",
+              "type": "Diets"
+            },
+            {
+              "name": "ExerciseUnit",
+              "type": "minutesOrHours"
             }
           ],
           "samples": [
@@ -577,6 +587,16 @@
           "values": [
             {
               "name": {
+                "value": "total fat"
+              }
+            },
+            {
+              "name": {
+                "value": "saturated fat"
+              }
+            },
+            {
+              "name": {
                 "value": "calories"
               }
             }
@@ -585,6 +605,11 @@
         {
           "name": "testLiteral",
           "values": [
+            {
+              "name": {
+                "value": "two cups of coffee"
+              }
+            },
             {
               "name": {
                 "value": "no",
@@ -1089,12 +1114,30 @@
           "prompts": {},
           "slots": [
             {
-              "name": "FoodLoop",
-              "type": "testLiteral",
+              "name": "Birthday",
+              "type": "AMAZON.DATE",
               "confirmationRequired": false,
               "elicitationRequired": true,
               "prompts": {
-                "elicitation": "Elicit.Slot.885428261312.822001576915"
+                "elicitation": "Elicit.Intent-Report.IntentSlot-Birthday"
+              }
+            },
+            {
+              "name": "Gender",
+              "type": "gender",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-Gender"
+              }
+            },
+            {
+              "name": "ActivityLevel",
+              "type": "MultipleChoice",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Report.IntentSlot-ActivityLevel"
               }
             },
             {
@@ -1134,48 +1177,12 @@
               }
             },
             {
-              "name": "Birthday",
-              "type": "AMAZON.DATE",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Intent-Report.IntentSlot-Birthday"
-              }
-            },
-            {
-              "name": "Gender",
-              "type": "gender",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Intent-Report.IntentSlot-Gender"
-              }
-            },
-            {
-              "name": "ActivityLevel",
-              "type": "MultipleChoice",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Intent-Report.IntentSlot-ActivityLevel"
-              }
-            },
-            {
               "name": "FoodAllergyOne",
               "type": "FoodAllergies",
               "confirmationRequired": false,
               "elicitationRequired": true,
               "prompts": {
                 "elicitation": "Elicit.Slot.536662923397.266341418254"
-              }
-            },
-            {
-              "name": "FoodAllergyTwo",
-              "type": "FoodAllergies",
-              "confirmationRequired": false,
-              "elicitationRequired": true,
-              "prompts": {
-                "elicitation": "Elicit.Slot.806032733235.247538269995"
               }
             },
             {
@@ -1186,20 +1193,6 @@
               "prompts": {
                 "elicitation": "Elicit.Slot.733267037056.303164978585"
               }
-            },
-            {
-              "name": "DietTwo",
-              "type": "Diets",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
-            },
-            {
-              "name": "SpecialDiets",
-              "type": "MultipleChoice",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
             },
             {
               "name": "Smoker",
@@ -1238,6 +1231,16 @@
               }
             },
             {
+              "name": "FoodLoop",
+              "type": "testLiteral",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.452832785417.89741247956",
+                "elicitation": "Elicit.Slot.885428261312.822001576915"
+              }
+            },
+            {
               "name": "MedicalConditionOne",
               "type": "MedicalConditions",
               "confirmationRequired": false,
@@ -1245,13 +1248,6 @@
               "prompts": {
                 "elicitation": "Elicit.Slot.153323920598.995560121912"
               }
-            },
-            {
-              "name": "MedicalConditionTwo",
-              "type": "MedicalConditions",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
             },
             {
               "name": "CupsOfWater",
@@ -1272,13 +1268,6 @@
               }
             },
             {
-              "name": "VitaminsTaken",
-              "type": "testLiteral",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
-            },
-            {
               "name": "StressLevel",
               "type": "StressLevel",
               "confirmationRequired": false,
@@ -1295,13 +1284,6 @@
               "prompts": {
                 "elicitation": "Elicit.Slot.153323920598.1350603768266"
               }
-            },
-            {
-              "name": "MentalConditionTwo",
-              "type": "MentalCondition",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
             },
             {
               "name": "HowOftenVisit",
@@ -1358,13 +1340,6 @@
               }
             },
             {
-              "name": "ExerciseUnit",
-              "type": "minutesOrHours",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
-            },
-            {
               "name": "Caffeine",
               "type": "testLiteral",
               "confirmationRequired": false,
@@ -1372,6 +1347,13 @@
               "prompts": {
                 "elicitation": "Elicit.Slot.694874806422.750315763684"
               }
+            },
+            {
+              "name": "VitaminsTaken",
+              "type": "testLiteral",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
             },
             {
               "name": "PregnantBefore",
@@ -1390,6 +1372,41 @@
               "prompts": {
                 "elicitation": "Elicit.Slot.1172106105090.28381469288"
               }
+            },
+            {
+              "name": "FoodAllergyTwo",
+              "type": "FoodAllergies",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "MedicalConditionTwo",
+              "type": "MedicalConditions",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "MentalConditionTwo",
+              "type": "MentalCondition",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "DietTwo",
+              "type": "Diets",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "ExerciseUnit",
+              "type": "minutesOrHours",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
             }
           ]
         }
@@ -1563,7 +1580,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Do you have trouble, GAINING,,weight,or,,LOSING,,weight"
+            "value": "Do you have a trouble, a, gaining weight, b, losing weight, or c, no trouble"
           }
         ]
       },
@@ -1599,23 +1616,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "{DietOne} and {DietTwo} . "
-          },
-          {
-            "type": "PlainText",
-            "value": "{DietOne} ."
-          },
-          {
-            "type": "PlainText",
-            "value": "I am doing the {DietOne} . "
-          },
-          {
-            "type": "PlainText",
-            "value": "I am on a {DietOne} {DietTwo} ."
-          },
-          {
-            "type": "PlainText",
-            "value": "I am on the {DietOne} ."
+            "value": "Are you on any of these special diets, vegetarian, kosher, halal, vegan, ketogenic, paleo, low-carb, low-sodium, low-sugar, low-fat, pescetarian, atkins, dash, gluten-free, mediterranean, raw food, sonoma, or other"
           }
         ]
       },
@@ -1624,7 +1625,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Fill in food allergy prompt"
+            "value": "Are you allergic or sensitive to any of these foods, citrus, corn products, dairy, eggs, gluten, peanuts, artificial sweeteners, shellfish, soy, sulfites, theobromine, gelatin, specific food dye colors, or other"
           }
         ]
       },
@@ -1669,7 +1670,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Medical Condition Fill In"
+            "value": "Are you suffering from any of the following conditions, type one diabetes, type two diabetes, heart disease, enlarged heart, congestive heart failure, clogged arteries, acid reflux, hernia, arthritis, lymphedema, fatty liver disease, sleep apnea, gout, gallbladder disease, thyroid disease, high blood pressure, metabolic disorder, unable to lose weight , metabolic disorder, unable to gain weight,  hromonal imbalance, or other"
           }
         ]
       },
@@ -1678,15 +1679,16 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Mental Condition Prompt two"
-          },
+            "value": "Are you being treated for any of the following mental conditions... A.D.D. slash A.D.H.D. ... Bipolar Disorder ... Depression ... O.C.D ... P.T.S.D ... Anorexia slash Bulimia "
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.452832785417.89741247956",
+        "variations": [
           {
             "type": "PlainText",
-            "value": "Are you being treated for any of the following mental conditions... A D D slash A D H D ... Bipolar Disorder ... Depression ... O C D ... P T S D ... Anorexia slash Bulimia "
-          },
-          {
-            "type": "PlainText",
-            "value": "Mental Condition Prompt"
+            "value": "Did you eat anything for breakfast yesterday?"
           }
         ]
       }

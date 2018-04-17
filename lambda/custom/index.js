@@ -6,9 +6,9 @@ var foodHandlers = require("./handlers/foodHandlers");
 var builtInHandlers = require("./handlers/builtInHandlers");
 var sessionHandlers = require("./handlers/sessionHandlers");
 var reportHandler = require("./report/reportHandler");
-var goalHandlers = require("./handlers/goalHandlers");
+let goalHandlers = require("./handlers/goalHandlers");
 var helpHandlers = require("./handlers/helpHandlers");
-var alexaSkillEvents = require('./handlers/alexaSkillEvents');
+var alexaSkillEvents = require("./handlers/alexaSkillEvents");
 
 exports.handler = function (event, context, callback) {
 

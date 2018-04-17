@@ -1,34 +1,33 @@
 exports.foodStates =  [
 	{
 		name: "breakfast",
-		confirm: "Did you eat anything for breakfast",
+		confirm: "Did you eat anything for breakfast yesterday",
 		speech: "What did you eat?",
-		reprompt: "Anything else for breakfast?"
-	},
+		reconfirm: "Anything else for breakfast?"
+	}, /*
 	{
 		name: "lunch",
 		confirm: "What about before lunch?",
 		speech: "and you had?",
-		reprompt: "Forgetting anything?"
-	},
+	 	reconfirm: "Forgetting anything?"
+	}, */
 	{
 		name: "lunch",
-		confirm: "Did you have anything for lunch?",
-		speech: "What did you have",
-		reprompt: ""
-	},
+		confirm: "Did you eat anything for lunch?",
+		speech: "What did you have?",
+		reconfirm: "Anything else for lunch?"
+	}, /*
 	{
 		name: "after lunch",
 		confirm: "Any mid day snacks?",
-		speech: "What did you eat for dinner?",
-		reprompt: "What else did you have for dinner?"
-	},
+		speech: "What did you eat?",
+	 	reconfirm: "What other snacks?"
+	}, */
 	{
 		name: "dinner",
-		speech: "",
-	},
-	{
-		name: "late night snack"
+		confirm: "Did you eat anything at dinner last night?",
+		speech: "Tell me what you ate",
+		reconfirm: "Did you eat anything else for dinner?"
 	}
 ];
 

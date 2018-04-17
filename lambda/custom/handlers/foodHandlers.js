@@ -1,8 +1,8 @@
-var knex = require("../helpers/knexfile");
-var axios = require("../helpers/axiosFile");
+let knex = require("../helpers/knexfile");
+let axios = require("../helpers/axiosFile");
 
 
-var getFoodAPI = function(food) { return new Promise((resolve, reject) => {
+let getFoodAPI = function(food) { return new Promise((resolve, reject) => {
 
     axios.post("/", {
         query: food
@@ -19,7 +19,7 @@ var getFoodAPI = function(food) { return new Promise((resolve, reject) => {
      */
 })}
 
-var logFood = function(food, userID) { return new Promise((resolve) => {
+let logFood = function(food, userID) { return new Promise((resolve) => {
 
     console.log('Log food called', food, userID);
 
@@ -38,27 +38,58 @@ var logFood = function(food, userID) { return new Promise((resolve) => {
         /*
         .catch(err => reject("Saving failed, please try again"))
         */
-})}
+})};
 
-var foodInfoResponse = (food, infoToGet) => {
-    var res = 'A ' + food['food_name'] + ' has ';
+let foodTypes = {
+    'nf_calories': [
+        'Calories', 'Cals'
+    ],
+    'nf_total_fat': [
+		'total fat', 'fat'
+	],
+    'nf_sodium': [
+		'Sodium', 'Salt'
+    ],
+    'nf_cholestorol': [
+        'cholesterol'
+    ],
+    'nf_saturated_fat': [
+		'Saturated Fat'
+	],
+    'nf_total_carbohydrates': [
+        'total carbohydrates', 'carbohydrates', 'carbs'
+    ],
+    'nf_protein': [
+        'protein'
+    ]
+};
+
+let foodInfoResponse = (food, infoToGet) => {
+	let res = 'A ' + food['food_name'] + ' has ';
+
     switch (infoToGet) {
         case 'calories':
-            res += food['nf_calories'] + ' calories';
-            break;
+			return res + food['nf_calories'] + ' calories';
+
         case 'fat':
-            res += food['nf_total_fat'] + ' total fat';
-            break;
+			return res + food['nf_total_fat'] + ' total fat';
+
         case 'sodium':
-            res += food['nf_sodium'] + ' sodium ';
-            break;
+			return res + food['nf_sodium'] + ' sodium ';
+
+        case 'saturated fat':
+			return res + food['nf_saturated_fat'] + ' saturated fat ';
+
+        case 'sugar':
+            return res + food['nf_sugar'];
+
         default:
             res += food['nf_calories'] + ' calories ';
             res += food['nf_total_fat'] + ' total fat ';
             res += food['nf_sodium'] + ' sodium ';
+            return res;
     }
-    return res;
-}
+};
 
 
 module.exports = {

@@ -1,4 +1,4 @@
-exports.helpSpeech = {
+let helpSpeech = {
 	"default": "Help Menu, This skill is meant for tracking what you eat and your weight as well retrieving " +
 				"Nutritional info about food, to learn more about the commands available say help commands",
 	"commands": "Help Menu, You can say help all,  help change weight,  help set goal,  help add food,  help get food info,  and help report",
@@ -8,6 +8,7 @@ exports.helpSpeech = {
 	"nutrition info": "To get nutritional info, say something like, what's in a bean burrito or how many calories are in a dr pepper",
 	"report": "Our report is designed to be sent to a nutritionist, say start a report to begin"
 };
+exports.helpSpeech =  helpSpeech;
 
 const helpReprompt = {
 	"default": "Would you like to learn about the commands available?"

@@ -1,8 +1,8 @@
-var axios = require("../../helpers/axiosFile");
+let axios = require("../../helpers/axiosFile");
 
-var { foodStates, foodErrorSpeech } = require('../../helpers/speech');
+let { foodStates, foodErrorSpeech } = require('../../helpers/speech');
 
-var getFoodAPI = function(food) { return new Promise((resolve, reject) => {
+let getFoodAPI = function(food) { return new Promise((resolve, reject) => {
 
     axios.post("/", {
         query: food
@@ -13,41 +13,56 @@ var getFoodAPI = function(food) { return new Promise((resolve, reject) => {
         .catch((err) => {
             console.log('getFoodAPI error', err);
 
-            this.emit(":elicitSlot", "FoodLoop", foodErrorSpeech, updatedIntent);
+			this.attributes.slots = slots;
+            this.emit(":elicitSlot", "FoodLoop", foodErrorSpeech);
         })
 
 })};
 
-var getServingUnits = require("./getServingUnits");
+let getServingUnits = require("./getServingUnits");
 
 
-module.exports = async function(value) {
-	let status = this.attributes.slots.FoodLoop.confirmationStatus;
+module.exports = async function(value, slots) {
+	let status = slots.FoodLoop.confirmationStatus;
 	let foodStrings = foodStates[this.attributes.reportState];
+	console.log('food loop called', status);
 
 	if (status === "CONFIRMED") {
 
-		this.emit(":elicitSlot", "FoodLoop", foodStrings.confirm);
+		this.attributes.slots = slots;
+		this.emit(":elicitSlot", "FoodLoop", foodStrings.speech);
 
 	} else if (status === "DENIED") {
+		let state = this.attributes.reportState + 1;
+		this.attributes.reportState = state;
+		let updatedIntent = this.event.request.intent;
 
-		this.attributes.reportState += 1;
 		if (this.attributes.reportState === foodStates.length) {
-			this.emit(":delegate");
+
+			slots.FoodLoop.confirmationStatus = 'CONFIRMED';
+			this.attributes.slots = slots;
+			updatedIntent.slots = slots;
+			this.emit(":delegate", updatedIntent);
+
 		}
 		else {
-            let foodStrings = foodStates[this.attributes.reportState];
-			this.emit(":elicitSlot", "FoodLoop", foodStrings.speech);
+
+			slots.FoodLoop.confirmationStatus = 'NONE';
+			this.attributes.slots = slots;
+			updatedIntent.slots = slots;
+			this.emit(":confirmSlot", "FoodLoop", foodStates[state].confirm, updatedIntent);
+
 		}
 
 	} else {
 
-        var foods = await getFoodAPI.bind(this)(value, state);
+        let foods = await getFoodAPI.bind(this)(value);
+		console.log('got foods', foods);
+        //await getServingUnits.bind(this)(foods); // Only returns if no foods have serving units
 
-        await getServingUnits.bind(this)(foods); // Only returns if no foods have serving units
-
+		this.attributes.slots = slots;
         this.attributes.foodLog.push(foods);
-        this.emit(":confirmSlot", "FoodLoop", foodStrings.reprompt);
+        this.emit(":confirmSlot", "FoodLoop", foodStrings.reconfirm);
 	}
 };
 

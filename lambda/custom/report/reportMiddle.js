@@ -1,52 +1,56 @@
-var foodLoop = require("./food/foodLoop");
-var { Birthday, Gender, Height } = require("./SlotHandlers");
-var servingHandler = require("./food/servingHandler");
+let foodLoop = require("./food/foodLoop");
+let { Birthday, Gender, Height } = require("./SlotHandlers");
 
-var getIntentChanges = (oldIntent, newIntent) => {
-	var changedIntents = [];
-	for (let key in oldIntent) {
-		if (oldIntent[key].value !== newIntent[key].value) {
+let getIntentChanges = (oldIntent, newIntent) => {
+	let changedIntents = [];
+	for (let key in newIntent) {
+		if (
+			newIntent[key].value !== oldIntent[key].value ||
+			newIntent[key].name !== oldIntent[key].name ||
+			newIntent[key].confirmationStatus !== oldIntent[key].confirmationStatus
+		) {
+			console.log(oldIntent[key].value, newIntent[key].value);
+			console.log(oldIntent[key].name, newIntent[key].name);
+			console.log(oldIntent[key].confirmationStatus, newIntent[key].confirmationStatus);
+
 			changedIntents.push(newIntent[key]);
 		}
 	}
 	return changedIntents;
 };
 
-var reportMiddle = function() {
+let reportMiddle = function() {
 
 	let slots = this.event.request.intent.slots;
 	let changedIntents = getIntentChanges(this.attributes.slots, slots);
-	this.attributes.slots = slots;
 
+	let { name, value, confirmationStatus } = changedIntents[0] || {};
+	console.log(name, ":", value, ":", confirmationStatus);
+	console.log("changedIntents", changedIntents);
 
-	let { name, value } = changedIntents[0] || {};
+	console.log("oldslots", slots);
+	console.log("newslots", slots);
 
 	switch(name) {
 		case "Birthday":
-			Birthday.bind(this)(value);
+			Birthday.bind(this)(value, slots);
 			break;
 
 		case "Gender":
-			Gender.bind(this)(value);
+			Gender.bind(this)(value, slots);
 			break;
 
 		case "HeightFoot":
-			Height.bind(this)(value);
+			Height.bind(this)(value, slots);
 			break;
 
 		case "FoodLoop":
-			foodLoop.bind(this)(value);
-			break;
-
-		case "ServingNumber":
-			servingHandler.bind(this)(value, "number");
-			break;
-
-		case "ServingSize":
-			servingHandler.bind(this)(value, "size");
+			foodLoop.bind(this)(value, slots);
 			break;
 
 		default:
+			console.log("Running default report");
+			this.attributes.slots = slots;
 			this.emit(":delegate");
 	}
 };

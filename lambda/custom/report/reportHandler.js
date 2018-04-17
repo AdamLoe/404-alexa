@@ -6,7 +6,6 @@ module.exports = {
 	"Report": function() {
 		let dialogState = this.event.request.dialogState;
 		console.log("Report called: ", dialogState);
-		console.log('');
 
 		if (dialogState === "STARTED") {
 			//Load old report from user State
@@ -17,7 +16,12 @@ module.exports = {
 			reportEnd.bind(this)();
 		} else {
 			//Everything else
-			reportMiddle.bind(this)();
+			try {
+				reportMiddle.bind(this)();
+			}
+			catch(err) {
+				console.log('ERR', err);
+			}
 		}
 	},
 	"DeleteReport": function() {
