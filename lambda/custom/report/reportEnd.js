@@ -75,7 +75,7 @@ module.exports = function() {
 		nursing: slots.PregnantOrNursing
 	};
 	console.log("Attempting to send report ", report);
-	knex("alexa_assessment_log")
+	knex("wp_assessment_log")
 		.insert({
 			userID: this.event.session.user.userId,
 			assessment_log_file: report
@@ -91,34 +91,3 @@ module.exports = function() {
 
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

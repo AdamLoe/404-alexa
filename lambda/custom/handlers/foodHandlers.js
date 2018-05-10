@@ -1,7 +1,6 @@
 let knex = require("../helpers/knexfile");
 let axios = require("../helpers/axiosFile");
 
-
 let getFoodAPI = function(food) { return new Promise((resolve, reject) => {
 
     axios.post("/", {
@@ -21,11 +20,11 @@ let getFoodAPI = function(food) { return new Promise((resolve, reject) => {
 
 let logFood = function(food, userID) { return new Promise((resolve) => {
 
-    console.log('Log food called', food, userID);
+    console.log('Log food called', food);
 
-    knex("alexa_nutrition_log")
+    knex("wp_nutrition_log")
         .insert({
-            userID: userID,
+            userID: 1,
             log_file_input: JSON.stringify({ food: food})
         })
         .then((data) => {
@@ -94,11 +93,16 @@ let foodInfoResponse = (food, infoToGet) => {
 
 module.exports = {
     'addFood': async function() {
+  		const alexaId      = this.event.context.System.user.userId;
+  		const accessToken = this.event.context.System.user.accessToken;
+  		console.log(`LINKED: ${alexaId} : ${accessToken}`);
+        console.log('got attributes', this.attributes);
+        console.log('logging food for user', this.attributes.userId);
         let foodItems = this.event.request.intent.slots.foodItems.value;
 
         let food = await getFoodAPI.bind(this)(foodItems);
-        await logFood.bind(this)(food, this.event.session.user.userId);
-        this.emit(':ask', 'Ok, you ate those things');
+        await logFood.bind(this)(food, this.attributes.userId);
+        this.emit(':ask', "I've recorded what you ate");
     },
     "GetFoodInfo": async function() {
         let foodItem = this.event.request.intent.slots.foodItem.value;
@@ -121,4 +125,3 @@ module.exports = {
  ]
  }
  */
-

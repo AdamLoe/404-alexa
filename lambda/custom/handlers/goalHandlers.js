@@ -3,7 +3,7 @@ var knex = require("../helpers/knexfile");
 var setGoalLog = (goalID, userID) => {  return new Promise((resolve, reject) => {
     console.log('setGoalLogcalled', goalID, userID);
 
-		knex("alexa_goal_log")
+		knex("wp_goal_log")
 			.insert({
 				userID: userID,
 				goalID: goalID
@@ -19,7 +19,7 @@ var setGoalLog = (goalID, userID) => {  return new Promise((resolve, reject) => 
 var getGoalLogID = (goalID, userID) => {  return new Promise((resolve, reject) => {
     console.log('getGoalLogID called', goalID, userID);
 
-		knex("alexa_goal_log")
+		knex("wp_goal_log")
 			.select("goal_logID")
 			.where("userID", userID)
 			.where("goalID", goalID)
@@ -40,7 +40,7 @@ var getGoalLogID = (goalID, userID) => {  return new Promise((resolve, reject) =
 var updateGoalLog = (goalLogID, goalValue) => {  return new Promise((resolve, reject) => {
     console.log('updateGoalLog', goalLogID, goalValue);
 
-        knex("alexa_goal_archive")
+        knex("wp_goal_archive")
             .insert({
                 goal_logID: goalLogID,
                 goal_value: goalValue
@@ -60,7 +60,7 @@ module.exports = {
         this.attributes.weight = weight;
 
         let goalID = 1;
-        let userID = this.event.session.user.userId;
+        let userID = 1;
 
         try {
             let logID = await getGoalLogID(goalID, userID);
@@ -86,12 +86,12 @@ module.exports = {
     "SetGoal": async function() {
 
         var dialogState = this.event.request.dialogState;
+        var goalToGet = this.event.request.intent.slots.goalToGet;
         if (dialogState !== "COMPLETED") {
             console.log("Delegate slots");
             this.emit(":delegate");
         } else {
 
-            var goalToGet = this.event.request.intent.slots.goalToGet;
         }
     },
 }
